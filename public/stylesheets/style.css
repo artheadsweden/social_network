@@ -54,7 +54,14 @@ a {
   background: #dae5f4;
 }
 
+.user_table td.center{
+  text-align: center;
+}
 
+.icon {
+  width: 16px;
+  height: 16px;
+}
 /* Input Form*/
 .user_input{
   width: 450px;

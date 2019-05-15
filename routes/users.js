@@ -1,14 +1,22 @@
 var express = require('express');
 var router = express.Router();
 var da = require('../data_access/da');
-var router = express.Router();
-
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   da.findPersons(function(err, users) {
     res.render('users', {title:'User listing', user_list: users});
   });
+});
+
+
+
+router.get('/delete', function(req, res) {
+  da.deleteUser(function(err){
+    da.findPersons(function(err, users) {
+      res.render('users', {title:'User listing', user_list: users});
+    });
+  }, req.query.id);
 });
 
 router.post('/', function(req, res, next) {

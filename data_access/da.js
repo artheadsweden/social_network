@@ -33,7 +33,24 @@ function getAllPersons(cb) {
     });
 }
 
+function searchPersons(cb, name) {
+    connect2db();
+    Person.find({ "name": { $regex: '.*' + name + '.*' } },
+        function(err,users){
+            cb(err, users);
+        });
+}
+
+function deleteUser(cb, id) {
+    connect2db();
+    Person.deleteOne({"_id": id}, function(err, res){
+       cb(err);
+    });
+}
+
 module.exports = {
     savePersonFromJson: savePerson,
-    findPersons: getAllPersons
+    findPersons: getAllPersons,
+    search: searchPersons,
+    deleteUser: deleteUser,
 };
