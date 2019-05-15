@@ -12,10 +12,15 @@ function connect2db() {
     });
 }
 
-function savePerson(p) {
+function savePerson(p, cb) {
     connect2db();
     var p1 = new Person(p);
-    p1.save();
+    p1.save(function(err){
+        if(err) {
+            console.log('Error creating user' + err);
+        }
+        cb(err);
+    });
 }
 
 function getAllPersons(cb) {

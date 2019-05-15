@@ -1,0 +1,24 @@
+extends ../layout
+block content
+    h1 Add User
+    form.user_input(action='/users', method='post')
+        label(for='name')
+            span Full Name
+            input(type='text', name='name', id='name', required='true')
+        label(for='street_address')
+            span Street Addres
+            input(type='text', name='street_address', id='street_address', required='true')
+        label(for='zip_code')
+            span Zip Code
+            input(type='text', name='zip_code', id='zip_code', required='true')
+        label(for='city')
+            span City
+            input(type='text', name='city', id='city', required='true')
+        label(for='age')
+            span Age
+            input(type='text', name='age', id='age', required='true')
+        label.control-label(for='submit')
+            span
+            input(type='submit', id='submit', value='Save')
+
+    script(type='text/javascript' src='/javascripts/input.js')
