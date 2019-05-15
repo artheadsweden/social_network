@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 List of all users
+    table.table
+        tr
+            th Name
+            th Street Address
+            th Zip Code
+            th City
+            th Age
+        if user_list && user_list.length > 0
+            each user in user_list
+                tr
+                    td #{user.name}
+                    td #{user.street_address}
+                    td #{user.zip_code}
+                    td #{user.city}
+                    td #{user.age}
+        else
+            tr
+                td(colspan=5) No records

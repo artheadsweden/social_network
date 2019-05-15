@@ -18,6 +18,17 @@ function savePerson(p) {
     p1.save();
 }
 
+function getAllPersons(cb) {
+    connect2db();
+    Person.find(function(err, users) {
+        if(err) {
+            console.log('Error getting users' + err);
+        }
+        cb(err, users);
+    });
+}
+
 module.exports = {
-    savePersonFromJson: savePerson
+    savePersonFromJson: savePerson,
+    findPersons: getAllPersons
 };
