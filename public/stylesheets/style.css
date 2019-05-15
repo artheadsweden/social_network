@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: darkblue;
+}
+
+.error {
+  color: red;
+  font-family: "Comic Sans MS";
+  text-decoration: underline;
+}
+
+#lucky_number {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+a {
+  color: #00B7FF;
+}
