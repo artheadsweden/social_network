@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    h1 Add User
+    form.user_input(action='/users', method='post')
+        label(for='first_name')
+            span First Name
+            input(type='text', name='first_name', id='first_name', required='true')
+        label(for='last_name')
+            span Last Name
+            input(type='text', name='last_name', id='last_name', required='true')
+        label(for='email')
+            span Email
+            input(type='email', name='email', id='email', required='true')
+        label(for='username')
+            span Username
+            input(type='text', name='username', id='username', required='true')
+        label(for='password')
+            span Password
+            input(type='password', name='password', id='password', required='true')
+        label(for='birthyear')
+            span Year of Birth
+            input(type='text', name='birthyear', id='birthyear', required='true')
+        label.control-label(for='submit')
+            span
+            input(type='submit', id='submit', value='Save')

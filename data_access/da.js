@@ -1,5 +1,7 @@
 const Person = require('../models/person');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 function connect2db() {
     mongoose.connect('mongodb://localhost:27017/social_network',
@@ -15,7 +17,11 @@ function connect2db() {
 function savePerson(p) {
     connect2db();
     var p1 = new Person(p);
-    p1.save();
+    bcrypt.hash(p1.password, 10, function(err, hash){
+        p1.password = hash;
+        p1.save();
+    });
+
 }
 
 function getAllPersons(cb) {
@@ -29,6 +35,6 @@ function getAllPersons(cb) {
 }
 
 module.exports = {
-    savePersonFromJson: savePerson,
+    savePersonFromForm: savePerson,
     findPersons: getAllPersons
 };

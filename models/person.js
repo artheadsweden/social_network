@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 
 // Create Person Schema
 const PersonSchema = new Schema({
-    name: String,
-    street_address: String,
-    zip_code: String,
-    city: String,
-    age: Number
+    first_name: String,
+    last_name: String,
+    email: String,
+    username: String,
+    password: String,
+    birthyear: Number
 }, { collection: 'persons' });
 
 // Create model
