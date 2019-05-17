@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Welcome to #{title}
+  form.user_input(action='/search', method='post')
+    label(for='search')
+      span Search
+      input(type='text', name='search', id='search')
+    label.control-label(for='submit')
+      span
+      input(type='submit', id='submit', value='Search')

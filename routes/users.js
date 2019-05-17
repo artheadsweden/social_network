@@ -12,8 +12,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  da.savePersonFromForm(req.body);
-  res.send("Saved");
+  da.savePersonFromForm(req.body, function(err){
+    da.findPersons(function(err, users) {
+      res.render('users/users', {title:'User listing', user_list: users});
+    });
+  });
 });
 
 router.get('/add', function(req, res){

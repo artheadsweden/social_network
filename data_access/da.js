@@ -14,14 +14,30 @@ function connect2db() {
     });
 }
 
-function savePerson(p) {
+function savePerson(p, cb) {
     connect2db();
     var p1 = new Person(p);
     bcrypt.hash(p1.password, 10, function(err, hash){
         p1.password = hash;
-        p1.save();
+        p1.save(function(err){
+            if(err) {
+                console.log("Error creating user" + err)
+            }
+            cb(err);
+        });
     });
+}
 
+
+function search(pattern, cb) {
+    connect2db();
+    Person.find({$or: [
+                        {first_name: {$regex: '.*' + pattern + '.*'}},
+                        {last_name:{$regex: '.*' + pattern + '.*'}}
+                      ]
+    }, function(err, users){
+        cb(err, users);
+    });
 }
 
 function getAllPersons(cb) {
@@ -36,5 +52,6 @@ function getAllPersons(cb) {
 
 module.exports = {
     savePersonFromForm: savePerson,
-    findPersons: getAllPersons
+    findPersons: getAllPersons,
+    search: search,
 };
