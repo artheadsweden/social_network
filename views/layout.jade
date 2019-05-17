@@ -3,5 +3,23 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
   body
+    .container
+      .row
+        .col-xs-4
+          a(href="/")
+            img.logo(src="/images/icon.png")
+        .col-xs-4
+          .title Social Network
+        .col-xs-4
+          b #{user}
+      .row
+        .col-xs-4
+          .menu-box
+            a.menu(href="/") Home
+            a.menu(href="/users") List All Users
+            a.menu(href="/users/add_user") Add User
+            a.menu(href="/login") Login/Logout
+
     block content

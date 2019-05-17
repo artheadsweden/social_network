@@ -1,27 +1,29 @@
-extends layout
+extends ../layout
 
 block content
     h1= title
     table.user_table
         tr
-            th Name
+            th First Name
+            th Last Name
+            th Username
             th Street Address
             th Zip Code
             th City
-            th Age
             th Delete
         if user_list && user_list.length > 0
             each user in user_list
                 tr
                     td(hidden='true') #{user._id}
-                    td #{user.name}
+                    td #{user.first_name}
+                    td #{user.last_name}
+                    td #{user.username}
                     td #{user.street_address}
                     td #{user.zip_code}
                     td #{user.city}
-                    td #{user.age}
                     td.center
                         a(href="/users/delete?id=#{user._id}")
                             img.icon(src="/images/trash.png")
         else
             tr
-                td(colspan=5) No records
+                td(colspan=8) No records

@@ -4,7 +4,7 @@ var da = require('../data_access/da');
 
 router.post('/', function(req, res){
     da.search(function(err, users) {
-        res.render('users', {title:'Search results', user_list: users});
+        res.render('users/users', {title:'Search results', user_list: users});
     }, req.body['search']);
 });
 

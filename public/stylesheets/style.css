@@ -22,6 +22,41 @@ a {
   color: #00B7FF;
 }
 
+.logo {
+  width: 128px;
+  height: 128px;
+}
+
+.title {
+  font-family: Arial;
+  font-size: 72px;
+  color: #394D61;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+/* Menu Buttons*/
+.menu {
+  background: #495C70;
+  color: #dae5f4;
+  font-family: "Arial Black";
+  font-size: 24px;
+  border-radius: 10px;
+  padding-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  margin: 15px;
+  box-shadow: #394D61 4px 4px 10px;
+}
+
+.menu:hover{
+  color: #4e95f4;
+  text-decoration: none;
+}
+
+.menu-box {
+  margin-bottom: 50px;
+}
 
 /* User Table */
 .user_table {
@@ -62,6 +97,7 @@ a {
   width: 16px;
   height: 16px;
 }
+
 /* Input Form*/
 .user_input{
   width: 450px;
@@ -74,6 +110,7 @@ a {
 .user_input input[type=button],
 .user_input input[type=text],
 .user_input input[type=email],
+.user_input input[type=password],
 .user_input textarea,
 .user_input label
 {
@@ -92,7 +129,8 @@ a {
   width: 150px;
 }
 .user_input input[type=text],
-.user_input input[type=email]
+.user_input input[type=email],
+.user_input input[type=password]
 {
   background: transparent;
   border: none;
@@ -118,7 +156,8 @@ a {
 .user_input textarea:focus,
 .user_input input[type=text]:focus,
 .user_input input[type=email]:focus,
-.user_input input[type=email] :focus
+.user_input input[type=email]:focus,
+.user_input input[type=password]:focus
 {
   border-bottom: 1px dashed #D9FFA9;
 }
