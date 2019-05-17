@@ -9,6 +9,7 @@ block content
             th Email
             th Username
             th Year of Birth
+            th Delete
         if user_list && user_list.length > 0
             each user in user_list
                 tr
@@ -17,6 +18,9 @@ block content
                     td #{user.email}
                     td #{user.username}
                     td #{user.birthyear}
+                    td.center
+                        a(href="/users/delete?id=#{user.id}")
+                            img.icon(src="/images/delete.png")
         else
             tr
-                td(colspan=5) No records
+                td(colspan=6) No records

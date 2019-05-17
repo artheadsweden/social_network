@@ -32,11 +32,21 @@ function savePerson(p, cb) {
 function search(pattern, cb) {
     connect2db();
     Person.find({$or: [
-                        {first_name: {$regex: '.*' + pattern + '.*'}},
-                        {last_name:{$regex: '.*' + pattern + '.*'}}
+                        {first_name: {$regex: pattern }},
+                        {last_name:{$regex: pattern }}
                       ]
     }, function(err, users){
         cb(err, users);
+    });
+}
+
+function deleteUser(id, cb) {
+    connect2db();
+    Person.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting user" + err);
+       }
+       cb(err);
     });
 }
 
@@ -54,4 +64,5 @@ module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     search: search,
+    deleteUser: deleteUser,
 };

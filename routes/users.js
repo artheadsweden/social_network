@@ -23,4 +23,12 @@ router.get('/add', function(req, res){
   res.render('users/add', {title: 'Add User'});
 });
 
+router.get('/delete', function(req, res){
+  da.deleteUser(req.query.id, function(err){
+    da.findPersons(function(err, users) {
+      res.render('users/users', {title:'User listing', user_list: users});
+    });
+  });
+});
+
 module.exports = router;
