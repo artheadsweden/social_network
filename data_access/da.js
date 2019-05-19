@@ -60,9 +60,17 @@ function getAllPersons(cb) {
     });
 }
 
+function getPersonByUsername(username, cb) {
+    connect2db();
+    Person.findOne({'username': username}, function(err, user){
+       cb(err, user);
+    });
+}
+
 module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     search: search,
     deleteUser: deleteUser,
+    getUserByUsername: getPersonByUsername,
 };

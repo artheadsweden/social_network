@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1 Welcome #{user.first_name}
+    img(src='/images/avatars/#{user.avatar}')
+    p Info about you:
+        p First Name: #{user.first_name}
+        p Last Name: #{user.last_name}
+        p Email: #{user.email}
+        p Username: #{user.username}
+        p Year of Birth: #{user.birthyear}
+    p This is your private page
+
+    a(href='/') Home page
+    br
+    a(href='/logout') Logout
+
+
+

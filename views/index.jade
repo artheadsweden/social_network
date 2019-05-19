@@ -9,3 +9,11 @@ block content
     label.control-label(for='submit')
       span
       input(type='submit', id='submit', value='Search')
+
+  p
+    if userid
+      a(href="/dashboard") Your Dashboard
+      br
+      a(href="/logout") Logout
+    else
+      a(href="/login") Login
