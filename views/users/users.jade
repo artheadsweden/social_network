@@ -2,6 +2,7 @@ extends ../layout
 
 block content
     h1= title
+
     table.user_table
         tr
             th First Name
@@ -10,6 +11,8 @@ block content
             th Username
             th Year of Birth
             th Delete
+            if userid
+                th Add as friend
         if user_list && user_list.length > 0
             each user in user_list
                 tr
@@ -17,10 +20,20 @@ block content
                     td #{user.last_name}
                     td #{user.email}
                     td #{user.username}
-                    td #{user.birthyear}
+                    td #{user.friends}
                     td.center
                         a(href="/users/delete?id=#{user.id}")
                             img.icon(src="/images/delete.png")
+                    if userid
+                        td.center
+                            if user.id === userid
+                                b You
+                            else if user.friends.includes(user.id)
+                                b Friend
+                            else
+                                a(href="users/add_friend?id=#{user.id}")
+                                    b add
+
         else
             tr
                 td(colspan=6) No records

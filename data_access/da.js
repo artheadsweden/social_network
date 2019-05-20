@@ -67,10 +67,23 @@ function getPersonByUsername(username, cb) {
     });
 }
 
+
+function addFriend(userid1, userid2, cb) {
+    connect2db();
+    Person.findOneAndUpdate({'_id': userid1}, {$push: {'friends': userid2}}, upsert=false, function(err){
+        console.log('Added 1');
+        Person.findOneAndUpdate({'_id': userid2}, {$push: {'friends': userid1}}, upsert=false, function(err){
+            console.log('Added 2');
+            cb(err);
+        });
+    });
+
+}
 module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     search: search,
     deleteUser: deleteUser,
     getUserByUsername: getPersonByUsername,
+    addFriend: addFriend,
 };
