@@ -9,7 +9,8 @@ const PersonSchema = new Schema({
     email: String,
     username: String,
     password: String,
-    birthyear: Number
+    birthyear: Number,
+    avatar: String
 }, { collection: 'persons' });
 
 // Create model

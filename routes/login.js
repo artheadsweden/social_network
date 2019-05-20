@@ -12,10 +12,10 @@ router.post('/', function(req, res){
         if(user) {
             bcrypt.compare(req.body['password'], user.password, function(err, answer){
                 if(answer) {
-                    console.log("You are who you are");
+                    req.session.userid = user._id;
+                    res.redirect('/dashboard');
                 }
                 else {
-                    console.log("Nope sorry no cake for you");
                     res.redirect('login', 401);
                 }
             });

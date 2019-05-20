@@ -68,10 +68,18 @@ function getPersonByUsername(username, cb) {
 }
 
 
+function getPersonById(userid, cb) {
+    connect2db();
+    Person.findOne({'_id': userid}, function(err, user){
+        cb(err, user);
+    });
+}
+
 module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     search: search,
     deleteUser: deleteUser,
     getUserByUsername: getPersonByUsername,
+    getUserById: getPersonById,
 };
