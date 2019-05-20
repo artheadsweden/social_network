@@ -4,7 +4,8 @@ const da = require('../data_access/da');
 const bcrypt = require('bcrypt');
 
 router.get('/', function(req, res){
-    res.render('login', {title: 'Login'});
+    var userid = req.session['userid'];
+    res.render('login', {title: 'Login', userid:userid});
 });
 
 router.post('/', function(req, res){

@@ -60,10 +60,38 @@ function getAllPersons(cb) {
     });
 }
 
+
+function getFriendsOfUser(user, cb) {
+    connect2db();
+    var friends_ids = user.friends;
+    var friends = [];
+    var count = 0;
+    friends_ids.forEach(function(id){
+        Person.findOne({'_id': id}, function(err, friend){
+            friends.push(friend);
+            count++;
+            if(count === friends_ids.length){
+                cb(friends);
+            }
+        });
+    });
+
+    cb(friends);
+}
+
 function getPersonByUsername(username, cb) {
     connect2db();
     Person.findOne({'username': username}, function(err, user){
         cb(err, user);
+    });
+}
+
+function addFriend(userid1, userid2, cb) {
+    connect2db();
+    Person.findOneAndUpdate({'_id': userid1}, {$push: {'friends': userid2}}, upsert=false, function(err){
+        Person.findOneAndUpdate({'_id': userid2}, {$push: {'friends': userid1}}, upsert=false, function(err){
+            cb(err);
+        });
     });
 }
 
@@ -75,6 +103,9 @@ function getPersonById(userid, cb) {
     });
 }
 
+
+
+
 module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
@@ -82,4 +113,6 @@ module.exports = {
     deleteUser: deleteUser,
     getUserByUsername: getPersonByUsername,
     getUserById: getPersonById,
+    addFriend: addFriend,
+    getFriendsOfUser: getFriendsOfUser,
 };

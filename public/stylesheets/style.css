@@ -22,8 +22,51 @@ a {
   color: #00B7FF;
 }
 
+.logo {
+  width: 128px;
+  height: 128px;
+}
+
+.layout-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 2px;
+}
+
+.title {
+  font-family: Arial;
+  font-size: 72px;
+  color: #394D61;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
 
 
+/* Menu Buttons */
+.menu {
+  background: #495C70;
+  color: #dae5f4;
+  font-family: "Arial Black";
+  font-size: 24px;
+  border-radius: 10px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-bottom: 8px;
+  margin: 15px;
+  box-shadow: #394D61 4px 4px 10px;
+}
+
+.menu:hover {
+  color: #4e95f4;
+  text-decoration: none;
+}
+
+.menu-box {
+  margin-bottom: 50px;
+}
 
 /* User Table */
 .user_table {

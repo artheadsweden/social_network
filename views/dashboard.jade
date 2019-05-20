@@ -10,4 +10,7 @@ block content
         p Username: #{user.username}
         p Year of Birth: #{user.birthyear}
 
-    a(href='/logout') Logout
+    p Friends
+    each friend in friends
+        img.avatar-icon(src="/images/avatars/#{friend.avatar}")
+        p #{friend.first_name} #{friend.last_name}

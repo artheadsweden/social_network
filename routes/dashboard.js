@@ -13,10 +13,18 @@ const rdl = (req, res, next) => {
 
 router.get('/', rdl, function(req, res){
     da.getUserById(req.session['userid'], function(err, u){
-        res.render('dashboard', {
-            title: "Dashboard for " + u.first_name,
-            user: u
+
+        da.getFriendsOfUser(u, function(friends){
+            var userid = req.session['userid'];
+            console.log(friends);
+            res.render('dashboard', {
+                title: "Dashboard for " + u.first_name,
+                user: u,
+                userid: userid,
+                friends: friends
+            });
         });
+
     });
 
 });

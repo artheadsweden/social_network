@@ -6,7 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-
+const favicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -42,6 +42,7 @@ app.use(
     })
 );
 
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
