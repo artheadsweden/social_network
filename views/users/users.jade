@@ -21,12 +21,19 @@ block content
                     td #{user.username}
                     td #{user.birthyear}
                     if userid
+                        - var not_found = true
                         td.center
                             if userid === user.id
                                 b You
+                                - not_found = false
                             else
-                                a(href="/users/add_friend?id=#{user.id}")
-                                    b Add
+                                each friend in friends
+                                    if friend == user.id
+                                        b Friend
+                                        - not_found = false
+                                if not_found
+                                    a(href="/users/add_friend?id=#{user.id}")
+                                        b Add
                     td.center
                         a(href="/users/delete?id=#{user.id}")
                             img.icon(src="/images/delete.png")
