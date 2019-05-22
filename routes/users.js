@@ -7,18 +7,21 @@ var da = require('../data_access/da');
 router.get('/', function(req, res, next) {
   da.findPersons(function(err, users) {
     var userid = req.session['userid'];
-    da.getUserById(userid, function(err, user){
-      res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: user.friends});
-    });
+    if(userid){
+      da.getUserById(userid, function(err, user){
+        res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: user.friends});
+      });
+    }
+    else {
+      res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: []});
+    }
+
   });
 });
 
 router.post('/', function(req, res, next) {
-  da.savePersonFromForm(req.body, function(err){
-    da.findPersons(function(err, users) {
-      var userid = req.session['userid'];
-      res.render('users/users', {title:'User listing', user_list: users, userid: userid});
-    });
+  da.savePersonFromForm(req.body, function(err) {
+    res.redirect('/users');
   });
 });
 
@@ -29,19 +32,13 @@ router.get('/add', function(req, res){
 
 router.get('/delete', function(req, res){
   da.deleteUser(req.query.id, function(err){
-    da.findPersons(function(err, users) {
-      var userid = req.session['userid'];
-      res.render('users/users', {title:'User listing', user_list: users, userid: userid});
-    });
+    res.redirect('/users');
   });
 });
 
 router.get('/add_friend', function(req, res){
   da.addFriend(req.session['userid'], req.query.id, function(err){
-    da.findPersons(function(err, users) {
-      var userid = req.session['userid'];
-      res.render('users/users', {title:'User listing', user_list: users, userid: userid});
-    });
+    res.redirect('/users');
   });
 });
 
