@@ -75,8 +75,6 @@ function getFriendsOfUser(user, cb) {
             }
         });
     });
-
-    cb(friends);
 }
 
 function getPersonByUsername(username, cb) {

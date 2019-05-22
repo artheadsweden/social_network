@@ -11,6 +11,13 @@ block content
         p Year of Birth: #{user.birthyear}
 
     p Friends
-    each friend in friends
-        img.avatar-icon(src="/images/avatars/#{friend.avatar}")
-        p #{friend.first_name} #{friend.last_name}
+    table.user_table
+        tr
+            th Image
+            th Name
+        each friend in friends
+            tr
+                td
+                    img.avatar-icon(src="/images/avatars/#{friend.avatar}")
+                td
+                    p #{friend.first_name} #{friend.last_name}
