@@ -64,6 +64,9 @@ function getAllPersons(cb) {
 function getFriendsOfUser(user, cb) {
     connect2db();
     var friends_ids = user.friends;
+    if(friends_ids.length === 0) {
+        cb([]);
+    }
     var friends = [];
     var count = 0;
     friends_ids.forEach(function(id){
