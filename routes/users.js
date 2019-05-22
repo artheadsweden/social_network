@@ -7,9 +7,10 @@ var da = require('../data_access/da')
 router.get('/', function(req, res, next) {
   da.findPersons(function(err, users) {
     var userid = req.session['userid'];
-    res.render('users/users', {title:'User listing', user_list: users, userid: userid});
+    da.getUserById(userid, function(err, user){
+      res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: user.friends});
+    });
   });
-
 });
 
 router.post('/', function(req, res, next) {
